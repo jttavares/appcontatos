@@ -8,9 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 import java.util.Objects;
@@ -26,24 +26,26 @@ public class Pessoa {
     private Long id;
 
     @Column(name = "nome", nullable = false)
-    @NotNull(message = "Nome válido deve ser informado.")
+    @NotNull(message = "Nome é obrigatório.")
+    @NotBlank(message = "Nome é obrigatório.")
     private String nome;
 
     @Column(name = "logradouro", nullable = false)
     @NotNull(message = "Obrigatório informar o endereço.")
+    @NotBlank(message = "Obrigatório informar o endereço.")
     private String endereco;
 
     @Column(name = "cep", nullable = true, length = 10)
-    @Min(value = 10, message = "O cep deve ser informado no formato '00.000-000'")
-    @Max(value = 10, message = "O cep deve ser informado no formato '00.000-000'")
+    @Size(min = 10, message = "O cep deve ser informado no formato '00.000-000'")
+    @Size(max = 10, message = "O cep deve ser informado no formato '00.000-000'")
     private String cep;
 
     @Column(name = "municipio", nullable = true)
     private String cidade;
 
     @Column(name = "uf", nullable = true, length = 2)
-    @Min(value = 2)
-    @Max(value = 2)
+    @Size(min = 2, message = "UF é obrigatorio e deve ter 2 caracteres")
+    @Size(max = 2, message = "UF é obrigatorio e deve ter 2 caracteres")
     private String uf;
 
     // @OneToMany(cascade = CascadeType.ALL, mappedBy = "contato", targetEntity = Contato.class)

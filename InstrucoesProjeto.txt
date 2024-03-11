@@ -1,7 +1,7 @@
 Avaliação Java / Spring: API Rest para Controle de Contatos
 
 Descrição do Projeto
-[] O desafio consiste em criar uma aplicação API Rest para gerenciar um sistema de
+[X] O desafio consiste em criar uma aplicação API Rest para gerenciar um sistema de
 cadastro de Pessoas e seus respectivos Contatos, onde cada Pessoa pode ter vários Contatos. O
 principal objetivo é permitir que operações CRUD (Criar, Ler, Atualizar, Deletar) sejam realizadas
 na estrutura de Pessoas e Contatos. 
@@ -12,7 +12,7 @@ na estrutura de Pessoas e Contatos.
 Requisitos Técnicos
 [X] • A aplicação deve ser criada utilizando Java com Spring Boot (Versão 3.1.9).
 [X] • Utilize JPA/Hibernate para persistência de dados, com banco de dados MySQL como implementado em aula/exemplo: o https://github.com/eduardohen1/Java2024Itau/tree/main/AppProdutos
-[] • Implemente tratamento dos dados de entrada e validações necessárias.
+[X] • Implemente tratamento dos dados de entrada e validações necessárias.
 [X] • A API deve ser documentada utilizando a biblioteca OpenAPI (Swagger).
 
 
@@ -85,16 +85,16 @@ Critérios de Avaliação
 [X] o Organização do código, incluindo estrutura, clareza e limpeza.
 [X] o Implementação correta do relacionamento entre entidades (Pessoas e Contatos).
 [X] o Uso adequado de padrões de design e melhores práticas do Spring.
-[] o Documentação da API com OpenAPI (Swagger), incluindo descrições claras (nas classes de controllers, antes da anotação de @GetMapping e demais, utilizar a anotação do Swagger @Operation(summary = “explicação do endpoint aqui!”)).
-[] o Estratégias de tratamento e validações dos dados de entrada.
+[X] o Documentação da API com OpenAPI (Swagger), incluindo descrições claras (nas classes de controllers, antes da anotação de @GetMapping e demais, utilizar a anotação do Swagger @Operation(summary = “explicação do endpoint aqui!”)).
+[X] o Estratégias de tratamento e validações dos dados de entrada.
 [X] o Configuração adequada do ambiente de persistência do JPA/Hibernate.
 [X] o Segurança JWT da aplicação; liberar os endpoints somente via token.
 
 
 Instruções de Entrega
-[] o O código deve estar disponível no repositório público GitHub (obs.: criar o repositório em modo público).
-[] o Incluir um README com instruções sobre como executar a aplicação, como adquirir o token de acesso, qual banco de dados utilizado, e como acessar a documentação do OpenAPI:
-[] o http://localhost:8080/swagger-ui.html.
+[X] o O código deve estar disponível no repositório público GitHub (obs.: criar o repositório em modo público).
+[X] o Incluir um README com instruções sobre como executar a aplicação, como adquirir o token de acesso, qual banco de dados utilizado, e como acessar a documentação do OpenAPI:
+[X] o http://localhost:8080/swagger-ui.html.
 [] o Enviar o link do repositório no GitHub para entrega:
 [] o Entrar na sala Google Classroom:
     ▪ https://classroom.google.com/c/NjY3Mjg0MDk2MTky?cjc=6x6kg7k

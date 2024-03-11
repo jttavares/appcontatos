@@ -2,8 +2,6 @@ package com.tavares.appcontatos._3_services.implementations;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,11 +30,15 @@ public class ContatoService implements ContatoServiceInterface {
 
     @Override
     public Optional<Contato> obterContatoPorId(Long contatoId) {
+        System.out.println("<<<<<<<<<<  ContatoService.obterContatoPorId()   <<<<<<<<<<<<<<<<<<<");
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         return contatoRepository.findById(contatoId);
     }
 
     @Override
     public List<Contato> listarContatos(Pessoa pessoa) {
+        System.out.println("<<<<<<<<<<  ContatoService.listarContatos()   <<<<<<<<<<<<<<<<<<<");
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         return contatoRepository.findAll()
                                 .stream()
                                 .filter(contact-> contact.getPessoa().getId() == pessoa.getId())
@@ -47,20 +49,25 @@ public class ContatoService implements ContatoServiceInterface {
 
     @Override
     public Contato atualizarContato(Contato contato) {
+        System.out.println("<<<<<<<<<<  ContatoService.atualizarContato()   <<<<<<<<<<<<<<<<<<<");
         Optional<Contato> findContato = contatoRepository.findById(contato.getId());
 		
 		//se ele existir, vou atualizar:
 		if(findContato.isPresent()) {
-			Contato updateContato = findContato.get(); //setId
+            Contato updateContato = findContato.get(); //setId
 			updateContato.setTipoContato(contato.getTipoContato());
 			updateContato.setContato(contato.getContato());
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 			return contatoRepository.save(updateContato);
 		}
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		return contato;	
     }
 
     @Override
     public void delete(Long id) {
+        System.out.println("<<<<<<<<<<  ContatoService.delete()   <<<<<<<<<<<<<<<<<<<");
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         contatoRepository.deleteById(id);
     }
 
