@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tavares.appcontatos._1_dominio.Contato;
+import com.tavares.appcontatos._1_dominio.Pessoa;
 import com.tavares.appcontatos._2_Infrastructure._1_repository.ContatoRepository;
 import com.tavares.appcontatos._3_services.interfaces.ContatoServiceInterface;
 
@@ -23,7 +24,10 @@ public class ContatoService implements ContatoServiceInterface {
 
     @Override
     public Contato adicionarContato(Contato contato) {
-        return contatoRepository.save(contato);
+        System.out.println("<<<<<<<<<<  ContatoService.adicionarContato()   <<<<<<<<<<<<<<<<<<<");
+        Contato contatoOut = contatoRepository.save(contato);
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        return contatoOut;
     }
 
     @Override
@@ -32,10 +36,10 @@ public class ContatoService implements ContatoServiceInterface {
     }
 
     @Override
-    public List<Contato> listarContatos(Long pessoaId) {
+    public List<Contato> listarContatos(Pessoa pessoa) {
         return contatoRepository.findAll()
                                 .stream()
-                                .filter(contact-> contact.getPessoaId() == pessoaId)
+                                .filter(contact-> contact.getPessoa().getId() == pessoa.getId())
                                 .toList();
 
 
@@ -50,7 +54,6 @@ public class ContatoService implements ContatoServiceInterface {
 			Contato updateContato = findContato.get(); //setId
 			updateContato.setTipoContato(contato.getTipoContato());
 			updateContato.setContato(contato.getContato());
-			updateContato.setPessoaId(contato.getPessoaId());
 			return contatoRepository.save(updateContato);
 		}
 		return contato;	

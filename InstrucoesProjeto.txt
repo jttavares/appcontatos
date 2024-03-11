@@ -6,60 +6,60 @@ cadastro de Pessoas e seus respectivos Contatos, onde cada Pessoa pode ter vári
 principal objetivo é permitir que operações CRUD (Criar, Ler, Atualizar, Deletar) sejam realizadas
 na estrutura de Pessoas e Contatos. 
 
-[] Utilizar segurança JWT.
+[X] Utilizar segurança JWT.
 
 
 Requisitos Técnicos
 [X] • A aplicação deve ser criada utilizando Java com Spring Boot (Versão 3.1.9).
 [X] • Utilize JPA/Hibernate para persistência de dados, com banco de dados MySQL como implementado em aula/exemplo: o https://github.com/eduardohen1/Java2024Itau/tree/main/AppProdutos
 [] • Implemente tratamento dos dados de entrada e validações necessárias.
-[] • A API deve ser documentada utilizando a biblioteca OpenAPI (Swagger).
+[X] • A API deve ser documentada utilizando a biblioteca OpenAPI (Swagger).
 
 
 Funcionalidades Necessárias
 1. CRUD de Pessoas:
-[] a. Criar Pessoa
-[] b. Obter Pessoa por ID
-[] c. Obter Pessoa por ID para mala direta
-[] d. Listar todas as Pessoas
-[] e. Atualizar Pessoa por ID
-[] f. Deletar Pessoa por ID
+[X] a. Criar Pessoa
+[X] b. Obter Pessoa por ID
+[X] c. Obter Pessoa por ID para mala direta
+[X] d. Listar todas as Pessoas
+[X] e. Atualizar Pessoa por ID
+[X] f. Deletar Pessoa por ID
 
 2. CRUD de Contatos:
-[] a. Adicionar um novo Contato a uma Pessoa
-[] b. Obter Contato por ID
-[] c. Listar todos os Contatos de uma Pessoa
-[] d. Atualizar Contato por ID
-[] e. Deletar Contato por ID
+[X] a. Adicionar um novo Contato a uma Pessoa
+[X] b. Obter Contato por ID
+[X] c. Listar todos os Contatos de uma Pessoa
+[X] d. Atualizar Contato por ID
+[X] e. Deletar Contato por ID
 
 Modelagem Sugerida
 • Pessoa: deve conter, pelo menos, os seguintes campos:
-[] o ID (único, não pode ser nulo)
-[] o Nome (não pode ser nulo)
-[] o Endereço (pode ser nulo)
-[] o CEP (pode ser nulo)
-[] o Cidade (pode ser nulo)
-[] o UF (pode ser nulo)
+[X] o ID (único, não pode ser nulo)
+[X] o Nome (não pode ser nulo)
+[X] o Endereço (pode ser nulo)
+[X] o CEP (pode ser nulo)
+[X] o Cidade (pode ser nulo)
+[X] o UF (pode ser nulo)
 
 • Contato: deve conter, pelo menos, os seguintes campos:
-[] o ID (único, não pode ser nulo)
-[] o Tipo contato (não pode ser nulo) [inteiro] (Utilize esse conceito: 0 Telefone, 1
-[] Celular)
-[] o Contato (não pode ser nulo)
-[] o Relacionamento com a entidade Pessoa [1 pessoa para vários contatos – pesquisar!]
+[X] o ID (único, não pode ser nulo)
+[X] o Tipo contato (não pode ser nulo) [inteiro] (Utilize esse conceito: 0 Telefone, 1
+[X] Celular)
+[X] o Contato (não pode ser nulo)
+[X] o Relacionamento com a entidade Pessoa [1 pessoa para vários contatos – pesquisar!]
 
 
 
 
 Endpoints Necessários
 o Segurança:
-[] o GET /token (solicitar token de acesso)
+[X] o GET /token (solicitar token de acesso)
 
 o Pessoa:
-[] o POST /api/pessoas (cria uma nova Pessoa)
-[] o GET /api/pessoas/{id} (retorna os dados de uma Pessoa por ID)
-[] o GET /api/pessoas/maladireta/{id} (retorna os dados de uma Pessoa por ID para mala direta)
-[] ▪ No endpoint de mala direta, utilizar o conceito de DTO. Este conceito cria uma classe diferente da classe Pessoa, com apenas os dados que precisamos (pesquisar!). Dê preferência para a criação de Records (Java 17+).
+[X] o POST /api/pessoas (cria uma nova Pessoa)
+[X] o GET /api/pessoas/{id} (retorna os dados de uma Pessoa por ID)
+[X] o GET /api/pessoas/maladireta/{id} (retorna os dados de uma Pessoa por ID para mala direta)
+        ▪ No endpoint de mala direta, utilizar o conceito de DTO. Este conceito cria uma classe diferente da classe Pessoa, com apenas os dados que precisamos (pesquisar!). Dê preferência para a criação de Records (Java 17+).
         ▪ Utilizar os campos para o DTO: ID; Nome; Concatenação do Endereço, CEP, Cidade, UF 
             • Exemplo:
                 {
@@ -68,27 +68,27 @@ o Pessoa:
                     “MalaDireta”: “Rua A, 1 – CEP: 11111-000 – Cidade/UF”
                 }
 
-[] o GET /api/pessoas (lista todas as Pessoas)
-[] o PUT /api/pessoas/{id} (atualiza uma Pessoa existente)
-[] o DELETE /api/pessoas/{id} (remove uma Pessoa por ID)
+[X] o GET /api/pessoas (lista todas as Pessoas)
+[X] o PUT /api/pessoas/{id} (atualiza uma Pessoa existente)
+[X] o DELETE /api/pessoas/{id} (remove uma Pessoa por ID)
 
 
 o Contato:
-[] o POST /api/pessoas/{id}/contatos (adiciona um novo Contato a uma Pessoa)
-[] o GET /api/contatos/{id} (retorna os dados de um Contato por ID)
-[] o GET /api/pessoas/{idPessoa}/contatos (lista todos os Contatos de uma Pessoa)
-[] o PUT /api/contatos/{id} (atualiza um Contato existente)
-[] o DELETE /api/contatos/{id} (remove um Contato por ID)
+[X] o POST /api/pessoas/{id}/contatos (adiciona um novo Contato a uma Pessoa)
+[X] o GET /api/contatos/{id} (retorna os dados de um Contato por ID)
+[X] o GET /api/pessoas/{idPessoa}/contatos (lista todos os Contatos de uma Pessoa)
+[X] o PUT /api/contatos/{id} (atualiza um Contato existente)
+[X] o DELETE /api/contatos/{id} (remove um Contato por ID)
 
-Critérios de Avaliação
-[] o Cumprimento dos requisitos funcionais.
-[] o Organização do código, incluindo estrutura, clareza e limpeza.
-[] o Implementação correta do relacionamento entre entidades (Pessoas e Contatos).
-[] o Uso adequado de padrões de design e melhores práticas do Spring.
+CXritérios de Avaliação
+[X] o Cumprimento dos requisitos funcionais.
+[X] o Organização do código, incluindo estrutura, clareza e limpeza.
+[X] o Implementação correta do relacionamento entre entidades (Pessoas e Contatos).
+[X] o Uso adequado de padrões de design e melhores práticas do Spring.
 [] o Documentação da API com OpenAPI (Swagger), incluindo descrições claras (nas classes de controllers, antes da anotação de @GetMapping e demais, utilizar a anotação do Swagger @Operation(summary = “explicação do endpoint aqui!”)).
 [] o Estratégias de tratamento e validações dos dados de entrada.
-[] o Configuração adequada do ambiente de persistência do JPA/Hibernate.
-[] o Segurança JWT da aplicação; liberar os endpoints somente via token.
+[X] o Configuração adequada do ambiente de persistência do JPA/Hibernate.
+[X] o Segurança JWT da aplicação; liberar os endpoints somente via token.
 
 
 Instruções de Entrega

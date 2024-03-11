@@ -2,6 +2,11 @@ package com.tavares.appcontatos._1_dominio;
 
 import java.util.Objects;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,13 +38,16 @@ public class Contato {
     @Column(name = "contato", nullable = false)
     private String contato;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_pessoa")
-    private Long pessoaId;
+    @JsonBackReference
+    // @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
 
     public Contato() {
     }
     public Contato(Integer tipoContato, String contato) {
+        // this.id = id;
         this.tipoContato = tipoContato;
         this.contato = contato;
     }
@@ -66,11 +74,12 @@ public class Contato {
         this.contato = contato;
     }
 
-    public Long getPessoaId() {
-        return pessoaId;
+    
+    public Pessoa getPessoa() {
+        return pessoa;
     }
-    public void setPessoaId(Long pessoaId) {
-        this.pessoaId = pessoaId;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
     //#endregion
     
@@ -93,7 +102,7 @@ public class Contato {
 
     @Override
     public String toString(){
-        return String.format("id: %id - tipoContato: %tipo - contato: %contato - pessoaId: %pessoa;", this.id, this.tipoContato, this.contato, this.pessoaId);
+        return String.format("id: %s - tipoContato: %s - contato: %s;", this.id, this.tipoContato, this.contato);
     }
 
 

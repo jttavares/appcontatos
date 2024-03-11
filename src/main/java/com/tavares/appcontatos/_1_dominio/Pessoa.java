@@ -12,6 +12,8 @@ import jakarta.persistence.Table;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="PESSOA")
 public class Pessoa {
@@ -35,7 +37,9 @@ public class Pessoa {
     @Column(name = "uf", nullable = true, length = 2)
     private String uf;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contato", targetEntity = Contato.class)
+    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "contato", targetEntity = Contato.class)
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa", targetEntity = Contato.class)
     private List<Contato> contatos;
 
     
@@ -43,8 +47,8 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, String endereco, String cep, String cidade, String uf) {
-        this.id = id;
+    public Pessoa( String nome, String endereco, String cep, String cidade, String uf) {
+        // this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.cep = cep;
@@ -71,7 +75,7 @@ public class Pessoa {
 
     @Override
     public String toString(){
-        return String.format("[id: %id, nome: %nome, endereco: %end, cep: %cep, cidade: %city, uf: %uf]", this.id, this.nome, this.endereco, this.cep, this.cidade, this.uf);
+        return String.format("[id: %s, nome: %s, endereco: %s, cep: %s, cidade: %s, uf: %s]", this.id, this.nome, this.endereco, this.cep, this.cidade, this.uf);
     }
 
     //#region Setters and Getters
@@ -123,7 +127,7 @@ public class Pessoa {
     public void setUf(String uf) {
         this.uf = uf;
     }
-
+    
     public List<Contato> getContatos() {
         return contatos;
     }
