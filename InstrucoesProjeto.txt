@@ -95,10 +95,10 @@ Instruções de Entrega
 [X] o O código deve estar disponível no repositório público GitHub (obs.: criar o repositório em modo público).
 [X] o Incluir um README com instruções sobre como executar a aplicação, como adquirir o token de acesso, qual banco de dados utilizado, e como acessar a documentação do OpenAPI:
 [X] o http://localhost:8080/swagger-ui.html.
-[] o Enviar o link do repositório no GitHub para entrega:
-[] o Entrar na sala Google Classroom:
+[X] o Enviar o link do repositório no GitHub para entrega:
+[X] o Entrar na sala Google Classroom:
     ▪ https://classroom.google.com/c/NjY3Mjg0MDk2MTky?cjc=6x6kg7k
-[] o Fazer a entrega da atividade nesta plataforma.
+[X] o Fazer a entrega da atividade nesta plataforma.
 
-[] Prazo de Entrega o 12/03/2024
+[X] Prazo de Entrega o 12/03/2024
 Bons estudos e bom trabalho!
