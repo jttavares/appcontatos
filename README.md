@@ -17,7 +17,7 @@
    
 ## UTILIZAÇÃO
 1. Você poderá acessar a API sua documentação Swagger no endpoint *[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)*
-2. Para utilizção obtenha primeiro um token de acesso em TOKEN "/token"
+2. Para utilizção obtenha primeiro um token de acesso em TOKEN "/token". É necessário apenas digitar um nome de usuário qualquer, por exemplo: "José"
 3. Copie o token retornado e cole no topo da página clicando no cadeado "Authorize"
 4. Cole o token no campo e clique em Login
 5. Após isso você pode realizar as consultas diretamente na documentação Swagger seguindo as orientações de cada rota.
