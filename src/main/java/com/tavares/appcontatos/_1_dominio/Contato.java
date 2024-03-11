@@ -16,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="CONTATOS")
@@ -27,6 +28,7 @@ public class Contato {
     private Long id;
 
     @Column(name = "tipo_contato", nullable = false)
+    @NotNull(message = "Obrigatório informar o tipo de contato")
     private Integer tipoContato; 
     /*
     * 0 - Telefone
@@ -36,6 +38,7 @@ public class Contato {
     */
 
     @Column(name = "contato", nullable = false)
+    @NotNull(message = "Obrigatório informar  o contato.")
     private String contato;
 
     @JsonBackReference

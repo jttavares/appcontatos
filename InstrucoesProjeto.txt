@@ -80,7 +80,7 @@ o Contato:
 [X] o PUT /api/contatos/{id} (atualiza um Contato existente)
 [X] o DELETE /api/contatos/{id} (remove um Contato por ID)
 
-CXritérios de Avaliação
+Critérios de Avaliação
 [X] o Cumprimento dos requisitos funcionais.
 [X] o Organização do código, incluindo estrutura, clareza e limpeza.
 [X] o Implementação correta do relacionamento entre entidades (Pessoas e Contatos).
