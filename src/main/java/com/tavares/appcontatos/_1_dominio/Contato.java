@@ -2,12 +2,7 @@ package com.tavares.appcontatos._1_dominio;
 
 import java.util.Objects;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -29,7 +25,7 @@ public class Contato {
 
     @Column(name = "tipo_contato", nullable = false)
     @NotNull(message = "Obrigatório informar o tipo de contato")
-    private Integer tipoContato; 
+    private TipoContato tipoContato; 
     /*
     * 0 - Telefone
     * 1 - Celular
@@ -39,17 +35,17 @@ public class Contato {
 
     @Column(name = "contato", nullable = false)
     @NotNull(message = "Obrigatório informar  o contato.")
+    @NotBlank(message = "Obrigatório informar  o contato.")
     private String contato;
 
     @JsonBackReference
-    // @ManyToOne(cascade = CascadeType.ALL)
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
     public Contato() {
     }
-    public Contato(Integer tipoContato, String contato) {
+    public Contato(TipoContato tipoContato, String contato) {
         // this.id = id;
         this.tipoContato = tipoContato;
         this.contato = contato;
@@ -63,10 +59,10 @@ public class Contato {
     public void setId(Long id) {
         this.id = id;
     }
-    public Integer getTipoContato() {
+    public TipoContato getTipoContato() {
         return tipoContato;
     }
-    public void setTipoContato(Integer tipoContato) {
+    public void setTipoContato(TipoContato tipoContato) {
         this.tipoContato = tipoContato;
     }
 
@@ -105,7 +101,7 @@ public class Contato {
 
     @Override
     public String toString(){
-        return String.format("id: %s - tipoContato: %s - contato: %s;", this.id, this.tipoContato, this.contato);
+        return String.format("id: %s - tipoContato: %s - contato: %s - pessoaId: %s;", this.id, this.tipoContato, this.contato, this.pessoa.getId());
     }
 
 
