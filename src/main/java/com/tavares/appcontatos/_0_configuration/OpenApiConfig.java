@@ -29,7 +29,7 @@ public class OpenApiConfig {
                     .email("jttavaresg@gmail.com")
                     .url("http://localhost")
                     )
-                    .version("Versão 1.0.0-SNAPSHOT")  
+                    .version("Versão 1.1.18-SNAPSHOT")  
                                  
                     )
                     .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
