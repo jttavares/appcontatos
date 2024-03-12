@@ -24,24 +24,28 @@
 6. Se você for utilizar o Postman ou o Insomnia acesse as rotas em *[http://localhost:8080/](http://localhost:8080/)* e o restante do caminho descrito no Swagger junto com seus parâmetros
 
 ## FACILITADORES PARA CONSULTAS
-### Exemplo de objeto para rota de criar Pessoas [POST]"api/pessoas"
- {
-      		"id": 11,
-      		"nome": "Hans Muller",
-      		"endereco": "Alameda Gaivotas, 468",
-      		"cep": "05.123-050",
-      		"cidade": "Barueri",
-      		"uf": "SP",
-      		"contatos": [
-      			{
-      				"id": 27,
-      				"tipoContato": "Celular",
-      				"contato": "(11) 95436-2563"
-      			}
-      		]
-      	}
---- 
-### Exemplo de objeto para rota de ATUALIZAR Pessoas [PUT]"api/pessoas/id"
+### Exemplo de envio de objeto para rota de CRIAR Pessoa [POST]"api/pessoas"
+<pre>
+    {
+        "id": 11,
+        "nome": "Hans Muller",
+        "endereco": "Alameda Gaivotas, 468",
+        "cep": "05.123-050",
+        "cidade": "Barueri",
+        "uf": "SP",
+        "contatos": [
+            {
+                "id": 27,
+                "tipoContato": "Celular",
+                "contato": "(11) 95436-2563"
+            }
+        ]
+    }
+</pre>
+
+### Exemplo de objeto para rota de ATUALIZAR Pessoa [PUT]"api/pessoas/id"
+
+<pre>
 {
   "id": 0,
   "nome": "string",
@@ -52,10 +56,32 @@
   "contatos": [
     {
       "id": 0,
-      "tipoContato": "Telefone",
+      "tipoContato": "Telefone" ou "Celular" ou "Email" ou "RedeSocial",
       "contato": "string"
     }
   ]
 }
-   
+</pre>
+
+--- 
+
+### Exemplo de envio de objeto para rota de ADICIONAR NOVO CONTATO a uma Pessoas [POST]"api/pessoas/id/contatos"
+<pre>
+{
+  "id": 0,
+  "tipoContato": "Telefone" ou "Celular" ou "Email" ou "RedeSocial",
+  "contato": "(11) 4444-4444",
+}
+</pre>
+
+--- 
+
+### Exemplo de envio de objeto para rota de ATUALIZAR um Contato [PUT]"api/contatos"
+<pre>
+{
+  "id": 27,
+  "tipoContato": "Telefone",
+  "contato": "(11) 4444-4444",
+}
+</pre>
 
