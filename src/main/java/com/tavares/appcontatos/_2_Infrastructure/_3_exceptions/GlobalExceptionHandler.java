@@ -47,6 +47,20 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(PessoaNotFoundException.class)
+    public Map<String, String> handlePessoaNotFoundException(PessoaNotFoundException ex){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("erro", ex.getMessage());
+        return errorMap;
+    }
+
+    @ExceptionHandler(ContatoNotFoundException.class)
+    public Map<String, String> handleContatoNotFoundException(ContatoNotFoundException ex){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("erro", ex.getMessage());
+        return errorMap;
+    }
+
     @ExceptionHandler(RuntimeException.class)
     public final ResponseEntity<Map<String, List<String>>> handleRuntimeExceptions(RuntimeException ex) {
         List<String> errors = Collections.singletonList(ex.getMessage());
@@ -59,4 +73,5 @@ public class GlobalExceptionHandler {
         errorResponse.put("errors", errors);
         return errorResponse;
     }
+
 }

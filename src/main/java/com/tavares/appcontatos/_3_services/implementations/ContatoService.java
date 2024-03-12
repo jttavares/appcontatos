@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.tavares.appcontatos._1_dominio.Contato;
 import com.tavares.appcontatos._1_dominio.Pessoa;
 import com.tavares.appcontatos._2_Infrastructure._1_repository.ContatoRepository;
+import com.tavares.appcontatos._2_Infrastructure._3_exceptions.ContatoNotFoundException;
+import com.tavares.appcontatos._2_Infrastructure._3_exceptions.PessoaNotFoundException;
 import com.tavares.appcontatos._3_services.interfaces.ContatoServiceInterface;
 
 @Service
@@ -29,10 +31,16 @@ public class ContatoService implements ContatoServiceInterface {
     }
 
     @Override
-    public Optional<Contato> obterContatoPorId(Long contatoId) {
+    public Optional<Contato> obterContatoPorId(Long contatoId) throws ContatoNotFoundException  {
         System.out.println("<<<<<<<<<<  ContatoService.obterContatoPorId()   <<<<<<<<<<<<<<<<<<<");
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        return contatoRepository.findById(contatoId);
+        Optional<Contato> findContato = contatoRepository.findById(contatoId);
+        if(findContato.isPresent()){
+            return findContato;
+        }
+        else{
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            throw new ContatoNotFoundException(String.format("Contato com o id %s não encontrado.", contatoId.toString()));
+        }
     }
 
     @Override
@@ -48,9 +56,10 @@ public class ContatoService implements ContatoServiceInterface {
     }
 
     @Override
-    public Contato atualizarContato(Contato contato) {
+    public Contato atualizarContato(Contato contato) throws ContatoNotFoundException {
         System.out.println("<<<<<<<<<<  ContatoService.atualizarContato()   <<<<<<<<<<<<<<<<<<<");
-        Optional<Contato> findContato = contatoRepository.findById(contato.getId());
+        Long contatoId = contato.getId();
+        Optional<Contato> findContato = contatoRepository.findById(contatoId);
 		
 		//se ele existir, vou atualizar:
 		if(findContato.isPresent()) {
@@ -60,8 +69,10 @@ public class ContatoService implements ContatoServiceInterface {
             System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 			return contatoRepository.save(updateContato);
 		}
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-		return contato;	
+        else{
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            throw new ContatoNotFoundException(String.format("Contato com o id %s não encontrado.", contatoId.toString()));
+        }
     }
 
     @Override

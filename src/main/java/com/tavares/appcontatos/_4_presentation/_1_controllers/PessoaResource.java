@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.tavares.appcontatos._1_dominio.Contato;
 import com.tavares.appcontatos._1_dominio.Pessoa;
 import com.tavares.appcontatos._2_Infrastructure._2_dto.PessoaDto;
+import com.tavares.appcontatos._2_Infrastructure._3_exceptions.PessoaNotFoundException;
 import com.tavares.appcontatos._3_services.implementations.PessoaService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -50,7 +51,7 @@ public class PessoaResource {
     //o   GET /api/pessoas/{id} (retorna os dados de uma Pessoa por ID)
     @Operation(summary = "Busca registros de uma Pessoa cm base em seu id")
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Pessoa>> obterPessoaPorId(@PathVariable Long id) {
+    public ResponseEntity<Optional<Pessoa>> obterPessoaPorId(@PathVariable Long id) throws PessoaNotFoundException  {
         Optional<Pessoa> pessoaObtida = pessoaService.obterPessoaPorId(id);
         if(pessoaObtida == null || pessoaObtida.isEmpty()){
             return ResponseEntity.badRequest().build();
@@ -62,7 +63,7 @@ public class PessoaResource {
     //o   GET /api/pessoas/maladireta/{id} (retorna os dados de uma Pessoa por ID para mala direta)
     @Operation(summary = "Busca dados de correspondência de uma Pessoa pra envio de mala direta")
     @GetMapping("/maladireta/{id}")
-    public ResponseEntity<List<PessoaDto>> obterMalaDireta(@PathVariable Long id) {
+    public ResponseEntity<List<PessoaDto>> obterMalaDireta(@PathVariable Long id) throws PessoaNotFoundException  {
         List<PessoaDto> malaDireta = pessoaService.buildMalaDireta(id);
             if(malaDireta == null)
                 return ResponseEntity.badRequest().build();
@@ -86,7 +87,7 @@ public class PessoaResource {
     // PUT /api/pessoas/{id} (atualiza uma Pessoa existente)
     @Operation(summary = "Atualizar os dados de uma Pessoa")
     @PutMapping
-    public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa){
+    public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa) throws PessoaNotFoundException {
         Pessoa upPessoa = pessoaService.atualizar(pessoa);
         if(upPessoa == null){
             return ResponseEntity.badRequest().build();
@@ -105,7 +106,7 @@ public class PessoaResource {
     //POST /api/pessoas/{id}/contatos ()
     @Operation(summary = "Adicionar um novo Contato a uma Pessoa")
     @PostMapping("/{id}/contatos")
-    public ResponseEntity<Pessoa> addContato(@PathVariable Long id, @RequestBody Contato contato) {
+    public ResponseEntity<Pessoa> addContato(@PathVariable Long id, @RequestBody Contato contato) throws PessoaNotFoundException  {
         Pessoa findPessoa = pessoaService.addContato(id, contato);
         if(findPessoa == null){
             return ResponseEntity.badRequest().build();
@@ -116,7 +117,7 @@ public class PessoaResource {
     //GET /api/pessoas/{idPessoa}/contatos ()
     @Operation(summary = "Listar todos os Contatos de uma Pessoa")
     @GetMapping("/{idPessoa}/contatos")
-    public ResponseEntity<List<Contato>> listarTodosContatos(@PathVariable Long idPessoa) {
+    public ResponseEntity<List<Contato>> listarTodosContatos(@PathVariable Long idPessoa) throws PessoaNotFoundException  {
         Optional<Pessoa> findPessoa =  pessoaService.obterPessoaPorId(idPessoa);
         if(findPessoa == null){
             return ResponseEntity.badRequest().build();            

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tavares.appcontatos._1_dominio.Contato;
+import com.tavares.appcontatos._2_Infrastructure._3_exceptions.ContatoNotFoundException;
 import com.tavares.appcontatos._3_services.implementations.ContatoService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +35,7 @@ public class ContatoResource {
     // GET /api/contatos/{id} ()
     @Operation(summary = "Retornar os dados de um Contato por seu ID")
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Contato>> obterContatosPorId(@PathVariable Long id) {
+    public ResponseEntity<Optional<Contato>> obterContatosPorId(@PathVariable Long id) throws ContatoNotFoundException{
         Optional<Contato> contatoObtido = contatoService.obterContatoPorId(id);
         if(contatoObtido == null || contatoObtido.isEmpty()){
             return ResponseEntity.badRequest().build();
@@ -46,7 +47,7 @@ public class ContatoResource {
     // PUT /api/contatos/{id} (atualiza um Contato existente)
     @Operation(summary = "Atualizar um contato existente")
     @PutMapping
-    public ResponseEntity<Contato> update(@RequestBody Contato contato){
+    public ResponseEntity<Contato> update(@RequestBody Contato contato) throws ContatoNotFoundException{
         Contato upContato = contatoService.atualizarContato(contato);
         if(upContato == null){
             return ResponseEntity.badRequest().build();

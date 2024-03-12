@@ -10,6 +10,7 @@ import com.tavares.appcontatos._1_dominio.Contato;
 import com.tavares.appcontatos._1_dominio.Pessoa;
 import com.tavares.appcontatos._2_Infrastructure._1_repository.PessoaRepository;
 import com.tavares.appcontatos._2_Infrastructure._2_dto.PessoaDto;
+import com.tavares.appcontatos._2_Infrastructure._3_exceptions.PessoaNotFoundException;
 import com.tavares.appcontatos._3_services.interfaces.PessoaServiceInterface;
 
 @Service
@@ -39,10 +40,17 @@ public class PessoaService implements PessoaServiceInterface {
     }
 
     @Override
-    public Optional<Pessoa> obterPessoaPorId(Long id) {
+    public Optional<Pessoa> obterPessoaPorId(Long id) throws PessoaNotFoundException {
         System.out.println(">>>>>>>>>>>> PessoaService.obterPessoaPorId() >>>>>>>>>>>");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-        return pessoaRepository.findById(id);
+        Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
+        if(findPessoa != null && findPessoa.isPresent()){
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+            return findPessoa;
+        }
+        else{
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
+        }
     }
 
     @Override
@@ -53,10 +61,11 @@ public class PessoaService implements PessoaServiceInterface {
     }
 
     @Override
-    public Pessoa atualizar(Pessoa pessoa) {
+    public Pessoa atualizar(Pessoa pessoa) throws PessoaNotFoundException  {
         System.out.println(">>>>>>>>>>>> PessoaService.atualizar() >>>>>>>>>>>");
-        Optional<Pessoa> findPessoa = pessoaRepository.findById(pessoa.getId());
-        if(findPessoa.isPresent()){
+        Long id = pessoa.getId();
+        Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
+        if(findPessoa != null && findPessoa.isPresent()){
             Pessoa updatePessoa = findPessoa.get();
             updatePessoa.setNome(pessoa.getNome());
             updatePessoa.setEndereco(pessoa.getEndereco());
@@ -68,8 +77,10 @@ public class PessoaService implements PessoaServiceInterface {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
             return pessoaRepository.save(pessoa);
         }
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-        return pessoa;
+        else{
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
+        }
     }
 
     private List<Contato> buildContatos(Pessoa pessoa, Pessoa updatePessoa) {
@@ -93,23 +104,30 @@ public class PessoaService implements PessoaServiceInterface {
     }
 
     @Override
-    public List<PessoaDto> buildMalaDireta(Long id) {
+    public List<PessoaDto> buildMalaDireta(Long id) throws PessoaNotFoundException {
         System.out.println(">>>>>>>>>>>> PessoaService.obterPessoaPorId() >>>>>>>>>>>");
-        List<PessoaDto> listPessoaDTOs = pessoaRepository.buildMalaDireta(id);
-		if(listPessoaDTOs.size() > 0)
-        {
+        Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
+        if(findPessoa.isPresent()){
+            List<PessoaDto> listPessoaDTOs = pessoaRepository.buildMalaDireta(id);
+            if(listPessoaDTOs.size() > 0)
+            {
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+                return listPessoaDTOs;
+            }
+        }
+        else{
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-            return listPessoaDTOs;
+            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
         }
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
 		return null;
     }
 
     @Override
-    public Pessoa addContato(Long id, Contato contato) {
-        System.out.println(">>>>>>>>>>>> PessoaService.addContato() >>>>>>>>>>>");
+    public Pessoa addContato(Long id, Contato contato) throws PessoaNotFoundException  {
+        System.out.println(">>>>>>>>>>>> PessoaService.addContato() >>>>>>>>>>>");        
         Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
-        if(findPessoa.isPresent()){
+        if(findPessoa != null && findPessoa.isPresent()){
             Pessoa updatePessoa = findPessoa.get();
             contato.setPessoa(updatePessoa);
             List<Contato> contatos = buildContatos(findPessoa.get(), updatePessoa);
@@ -118,8 +136,10 @@ public class PessoaService implements PessoaServiceInterface {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
             return pessoaRepository.save(updatePessoa);
         }
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-        return null;
+        else{
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
+        }
     }
 
 
