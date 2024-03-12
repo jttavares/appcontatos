@@ -24,8 +24,8 @@
 6. Se você for utilizar o Postman ou o Insomnia acesse as rotas em *[http://localhost:8080/](http://localhost:8080/)* e o restante do caminho descrito no Swagger junto com seus parâmetros
 
 ## FACILITADORES PARA CONSULTAS
-1. Exemplo de objeto para rota de criar Pessoas [POST]"api/pessoas"
-  1.   {
+### Exemplo de objeto para rota de criar Pessoas [POST]"api/pessoas"
+ {
       		"id": 11,
       		"nome": "Hans Muller",
       		"endereco": "Alameda Gaivotas, 468",
@@ -40,6 +40,22 @@
       			}
       		]
       	}
-2. 
+--- 
+### Exemplo de objeto para rota de ATUALIZAR Pessoas [PUT]"api/pessoas/id"
+{
+  "id": 0,
+  "nome": "string",
+  "endereco": "string",
+  "cep": "string",
+  "cidade": "string",
+  "uf": "string",
+  "contatos": [
+    {
+      "id": 0,
+      "tipoContato": "Telefone",
+      "contato": "string"
+    }
+  ]
+}
    
 
