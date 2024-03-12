@@ -4,8 +4,9 @@
 ### Principais tecnologias/bibliotecas utilizadas
 - Spring Boot
 - Maven
-- Base de dados PostgreSql
-- jpa nhibernate
+- Banco de dados PostgreSql
+- JPA 
+- NHibernate
 - Swagger
 - Autenticação JWT
 
@@ -13,18 +14,18 @@
 1. Instalar banco de dados PostgreSql
 2. Clonar o projeto
 3. Baixar dependências via Maven
-4. Se utilizar o VSCode como eu use a extensão "Extension Pack for Java" e "Spring Initializr Java Support" e execute a aplicação ou use outra IDE de sua preferência para isso.
+4. Se utilizar o VSCode, como eu, use a extensão "Extension Pack for Java" e "Spring Initializr Java Support" e execute a aplicação via ícone "Spring Boot Dashboard"; ou use outra IDE de sua preferência para isso.
    
 ## UTILIZAÇÃO
 1. Você poderá acessar a API sua documentação Swagger no endpoint *[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)*
-2. Para utilizção obtenha primeiro um token de acesso em TOKEN "/token". É necessário apenas digitar um nome de usuário qualquer, por exemplo: "José"
-3. Copie o token retornado e cole no topo da página clicando no cadeado "Authorize"
-4. Cole o token no campo e clique em "Authorize"
+2. Para utilizção obtenha primeiro um token de acesso em TOKEN "/token". É necessário apenas digitar um nome de usuário qualquer, por exemplo: "José";
+3. Copie o token retornado e cole no topo da página clicando no cadeado "Authorize";
+4. Cole o token no campo e clique em "Authorize";
 5. Após isso você pode realizar as consultas diretamente na documentação Swagger seguindo as orientações de cada rota.
 6. Se você for utilizar o Postman ou o Insomnia acesse as rotas em *[http://localhost:8080/](http://localhost:8080/)* e o restante do caminho descrito no Swagger junto com seus parâmetros
 
 ## FACILITADORES PARA CONSULTAS
-### Exemplo de envio de objeto para rota de CRIAR Pessoa [POST]"api/pessoas"
+### Exemplo de envio de objeto, payload, para rota de CRIAR Pessoa [POST]"api/pessoas"
 <pre>
     {
         "id": 11,
@@ -43,7 +44,9 @@
     }
 </pre>
 
-### Exemplo de objeto para rota de ATUALIZAR Pessoa [PUT]"api/pessoas/id"
+---
+
+### Exemplo de envio de objeto, payload, para rota de ATUALIZAR Pessoa [PUT]"api/pessoas/id"
 
 <pre>
 {
@@ -65,7 +68,7 @@
 
 --- 
 
-### Exemplo de envio de objeto para rota de ADICIONAR NOVO CONTATO a uma Pessoas [POST]"api/pessoas/id/contatos"
+### Exemplo de envio de objeto, payload, para rota de ADICIONAR NOVO CONTATO a uma Pessoas [POST]"api/pessoas/id/contatos"
 <pre>
 {
   "id": 0,
@@ -76,7 +79,7 @@
 
 --- 
 
-### Exemplo de envio de objeto para rota de ATUALIZAR um Contato [PUT]"api/contatos"
+### Exemplo de envio de objeto, payload, para rota de ATUALIZAR um Contato [PUT]"api/contatos"
 <pre>
 {
   "id": 27,
