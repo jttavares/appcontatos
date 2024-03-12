@@ -39,7 +39,7 @@ public class ContatoService implements ContatoServiceInterface {
         }
         else{
             System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-            throw new ContatoNotFoundException(String.format("Contato com o id %s não encontrado.", contatoId.toString()));
+            throw new ContatoNotFoundException(contatoId);
         }
     }
 
@@ -71,7 +71,7 @@ public class ContatoService implements ContatoServiceInterface {
 		}
         else{
             System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-            throw new ContatoNotFoundException(String.format("Contato com o id %s não encontrado.", contatoId.toString()));
+            throw new ContatoNotFoundException(contatoId);
         }
     }
 

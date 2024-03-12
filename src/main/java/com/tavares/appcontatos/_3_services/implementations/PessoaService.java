@@ -49,7 +49,7 @@ public class PessoaService implements PessoaServiceInterface {
         }
         else{
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
+            throw new PessoaNotFoundException(id);
         }
     }
 
@@ -79,7 +79,7 @@ public class PessoaService implements PessoaServiceInterface {
         }
         else{
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
+            throw new PessoaNotFoundException(id);
         }
     }
 
@@ -117,7 +117,7 @@ public class PessoaService implements PessoaServiceInterface {
         }
         else{
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
+            throw new PessoaNotFoundException(id);
         }
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
 		return null;
@@ -138,7 +138,7 @@ public class PessoaService implements PessoaServiceInterface {
         }
         else{
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
-            throw new PessoaNotFoundException(String.format("Pessoa com o id %s não encontrado.", id.toString()));
+            throw new PessoaNotFoundException(id);
         }
     }
 
