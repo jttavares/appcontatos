@@ -22,5 +22,24 @@
 4. Cole o token no campo e clique em "Authorize"
 5. Após isso você pode realizar as consultas diretamente na documentação Swagger seguindo as orientações de cada rota.
 6. Se você for utilizar o Postman ou o Insomnia acesse as rotas em *[http://localhost:8080/](http://localhost:8080/)* e o restante do caminho descrito no Swagger junto com seus parâmetros
+
+## FACILITADORES PARA CONSULTAS
+1. Exemplo de objeto para rota de criar Pessoas [POST]"api/pessoas"
+  1.   {
+      		"id": 11,
+      		"nome": "Hans Muller",
+      		"endereco": "Alameda Gaivotas, 468",
+      		"cep": "05.123-050",
+      		"cidade": "Barueri",
+      		"uf": "SP",
+      		"contatos": [
+      			{
+      				"id": 27,
+      				"tipoContato": "Celular",
+      				"contato": "(11) 95436-2563"
+      			}
+      		]
+      	}
+2. 
    
 
