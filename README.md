@@ -4,16 +4,16 @@
 ### Principais tecnologias/bibliotecas utilizadas
 - Spring Boot
 - Maven
-- Banco de dados PostgreSql
+- Banco de dados AWS RDS PostgreSql 
 - JPA 
 - NHibernate
 - Swagger
 - Autenticação JWT
 
 ## EXECUÇÃO DA APLICAÇÃO
-1. Instalar banco de dados PostgreSql
-2. Clonar o projeto
-3. Baixar dependências via Maven
+1. Um banco de dados PostgreSql está disponível e ativo na AWS, pronto para uso e com dados, dispensando a necessidade de instalar um banco de dados local. Esse banco ficará ativo até o dia 15/03/2024. Após isso, em application.properties habilite a opção para usar um banco local postgres ou h2.
+2. Clonar o projeto, abrir o mesmo com um editor de texto como o VSCode.
+3. Baixar dependências via Maven.
 4. Se utilizar o VSCode, como eu, use a extensão "Extension Pack for Java" e "Spring Initializr Java Support" e execute a aplicação via ícone "Spring Boot Dashboard"; ou use outra IDE de sua preferência para isso.
    
 ## UTILIZAÇÃO
