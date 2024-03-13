@@ -73,7 +73,7 @@
 {
   "id": 0,
   "tipoContato": "Telefone" ou "Celular" ou "Email" ou "RedeSocial",
-  "contato": "(11) 4444-4444",
+  "contato": "(11) 4444-4444"
 }
 </pre>
 
@@ -84,7 +84,7 @@
 {
   "id": 27,
   "tipoContato": "Telefone",
-  "contato": "(11) 4444-4444",
+  "contato": "(11) 4444-4444"
 }
 </pre>
 
