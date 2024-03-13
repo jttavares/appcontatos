@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tavares.appcontatos._1_dominio.Contato;
 import com.tavares.appcontatos._1_dominio.Pessoa;
@@ -16,7 +15,7 @@ import com.tavares.appcontatos._3_services.interfaces.PessoaServiceInterface;
 @Service
 public class PessoaService implements PessoaServiceInterface {
     private PessoaRepository pessoaRepository;
-    @Autowired
+    
     public PessoaService(PessoaRepository pessoaRepository) {
         this.pessoaRepository = pessoaRepository;
     }
@@ -39,9 +38,11 @@ public class PessoaService implements PessoaServiceInterface {
         return pessoaOut;   
     }
 
+    @SuppressWarnings("null")
     @Override
     public Optional<Pessoa> obterPessoaPorId(Long id) throws PessoaNotFoundException {
         System.out.println(">>>>>>>>>>>> PessoaService.obterPessoaPorId() >>>>>>>>>>>");
+        
         Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
         if(findPessoa != null && findPessoa.isPresent()){
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
@@ -60,6 +61,7 @@ public class PessoaService implements PessoaServiceInterface {
        return pessoaRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     @Override
     public Pessoa atualizar(Pessoa pessoa) throws PessoaNotFoundException  {
         System.out.println(">>>>>>>>>>>> PessoaService.atualizar() >>>>>>>>>>>");
@@ -96,6 +98,7 @@ public class PessoaService implements PessoaServiceInterface {
         return contatos;
     }
 
+    @SuppressWarnings("null")
     @Override
     public void delete(Long id) {
         System.out.println(">>>>>>>>>>>> PessoaService.delete() >>>>>>>>>>>");
@@ -103,6 +106,7 @@ public class PessoaService implements PessoaServiceInterface {
         pessoaRepository.deleteById(id);
     }
 
+    @SuppressWarnings("null")
     @Override
     public List<PessoaDto> buildMalaDireta(Long id) throws PessoaNotFoundException {
         System.out.println(">>>>>>>>>>>> PessoaService.obterPessoaPorId() >>>>>>>>>>>");
@@ -123,6 +127,7 @@ public class PessoaService implements PessoaServiceInterface {
 		return null;
     }
 
+    @SuppressWarnings("null")
     @Override
     public Pessoa addContato(Long id, Contato contato) throws PessoaNotFoundException  {
         System.out.println(">>>>>>>>>>>> PessoaService.addContato() >>>>>>>>>>>");        

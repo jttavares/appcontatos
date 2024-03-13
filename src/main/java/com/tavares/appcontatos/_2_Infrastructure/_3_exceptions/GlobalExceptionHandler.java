@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Map;
-import java.util.Set;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +32,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Map<String, List<String>>> handleValidationErrors(ConstraintViolationException ex) {
         List<String> errors= new ArrayList<>();
-        for (ConstraintViolation constrViolation : ex.getConstraintViolations()) {
+        for (ConstraintViolation<?> constrViolation : ex.getConstraintViolations()) {
             errors.add(constrViolation.getMessage());
         }
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);

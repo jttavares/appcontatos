@@ -3,6 +3,7 @@ package com.tavares.appcontatos._1_dominio;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -54,7 +55,7 @@ public class Contato {
 
     //#region Getters and Setters
     public Long getId() {
-        return id;
+        return id ;
     }
     public void setId(Long id) {
         this.id = id;
@@ -81,7 +82,10 @@ public class Contato {
         this.pessoa = pessoa;
     }
     //#endregion
-    
+    public static Long checkNull(Long id){
+        return id;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id);

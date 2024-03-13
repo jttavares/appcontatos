@@ -35,24 +35,28 @@ public class JwtTokenUtil {
     }
 
     public boolean validateToken(String token){
-        try {
-            byte[] apiKeySecretByte = Base64.getEncoder().encode(secret.getBytes());
-            Key secretKey = Keys.hmacShaKeyFor(apiKeySecretByte);
-            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey)
-                                    .parseClaimsJws(token);
+        try {           
+            Jws<Claims> claims = getClaims(token);
             return !claims.getBody().getExpiration().before(new Date());
         } catch (Exception e) {
             return false;
         }
     }
 
-    public String getUsernameFromToken(String token){
-        try {
-            byte[] apiKeySecretByte = Base64.getEncoder().encode(secret.getBytes());
-            Key secretKey = Keys.hmacShaKeyFor(apiKeySecretByte);
+    private Jws<Claims> getClaims(String token) {
+        byte[] apiKeySecretByte = Base64.getEncoder().encode(secret.getBytes());
+        Key secretKey = Keys.hmacShaKeyFor(apiKeySecretByte);
+        Jws<Claims> claims = Jwts.parserBuilder()
+                                .setSigningKey(secretKey)
+                                .build()
+                                .parseClaimsJws(token);
+        return claims;
+    }
 
-            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey)
-                                    .parseClaimsJws(token);
+    public String getUsernameFromToken(String token){
+        try {           
+
+            Jws<Claims> claims = getClaims(token);
 
             return claims.getBody().getSubject();
             

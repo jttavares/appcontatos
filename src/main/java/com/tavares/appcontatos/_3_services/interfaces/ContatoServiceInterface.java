@@ -7,6 +7,7 @@ import com.tavares.appcontatos._1_dominio.Contato;
 import com.tavares.appcontatos._1_dominio.Pessoa;
 import com.tavares.appcontatos._2_Infrastructure._3_exceptions.ContatoNotFoundException;
 
+
 public interface ContatoServiceInterface {
     Contato adicionarContato(Contato contato);
     Optional<Contato> obterContatoPorId(Long contatoId) throws ContatoNotFoundException ;
